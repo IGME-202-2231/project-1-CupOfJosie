@@ -4,29 +4,29 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Josie Caradonna
+-   Section: 05
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Top down in a style similar to undertale
+-   Camera Movement: it does not move
+-   Player Health: There will be lives but no health bar, like having 3 hp
+-   End Condition: would like to have waves of different enemies, ends with a boss.
+-   Scoring: Score points by killing enemies, not sure yet how to differentiate wins
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+A lone cowboy defends his horse from a horde of robots, dodge bullets and fire off your own to make sure your horse makes it to the doctor
 
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: w
+    -   Down: s
+    -   Left: a
+    -   Right: d
+-   Fire: space
 
 ## You Additions
 
