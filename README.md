@@ -9,15 +9,15 @@
 
 ## Game Design
 
--   Camera Orientation: Top down in a style similar to undertale
--   Camera Movement: it does not move
+-   Camera Orientation: Top down
+-   Camera Movement: Camera will not move but enemies will move down    
 -   Player Health: There will be lives but no health bar, like having 3 hp
--   End Condition: would like to have waves of different enemies, ends with a boss.
+-   End Condition: Make your way through waves of different obstacles to defeat Jack Rabbit Johnson
 -   Scoring: Score points by killing enemies, not sure yet how to differentiate wins
 
 ### Game Description
 
-A lone cowboy defends his horse from a horde of robots, dodge bullets and fire off your own to make sure your horse makes it to the doctor
+An Adventure-Time fan game about the robot cowboy Angel Face, who aims to rescue the piglets from Jack Rabbit Johnson
 
 ### Controls
 
@@ -30,7 +30,7 @@ A lone cowboy defends his horse from a horde of robots, dodge bullets and fire o
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+The assets are all designed by me!
 
 ## Sources
 
