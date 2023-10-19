@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementController: {fileID: 1507129918936464708}
+  bulletManager: {fileID: 732662830062507513, guid: fb50a43ef9f701d4fb7a6fa31d52cb5f, type: 3}
 --- !u!114 &1507129918936464708
 MonoBehaviour:
   m_ObjectHideFlags: 0

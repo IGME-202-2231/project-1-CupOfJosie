@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -10,6 +11,9 @@ public class InputController : MonoBehaviour
     [SerializeField]
     MovementController movementController;
 
+    [SerializeField]
+    BulletManager bulletManager;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         movementController.SetDirection(context.ReadValue<Vector2>());
@@ -17,7 +21,7 @@ public class InputController : MonoBehaviour
 
     public void OnPress(InputAction.CallbackContext context)
     {
-        //movementController.SetMode();
+        bulletManager.Spawn();
     }
 
 }

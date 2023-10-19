@@ -80,16 +80,4 @@ public class MovementController : MonoBehaviour
         }
 
     }
-
-    public void SetMode()
-    {
-      //if (collisionManager.AABB)
-      //{
-      //    collisionManager.AABB = false;
-      //}
-      //else
-      //{
-      //    collisionManager.AABB = true;
-      //}
-    }
 }

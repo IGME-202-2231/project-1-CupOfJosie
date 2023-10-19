@@ -13,6 +13,8 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     List<GameObject> bullets;
 
+    List<GameObject> killables;
+
     public List<GameObject> Enemies
     {
         get { return enemies; }
@@ -33,16 +35,25 @@ public class CollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        killables = new List<GameObject>();
       //if (AABB)
       //{
         foreach (GameObject enemy in enemies)
         {
             SpriteRenderer eBox = enemy.GetComponent<SpriteRenderer>();
 
+            if (enemy.transform.position.y < -5)
+            {
+                killables.Add(enemy);
+            }
+
             foreach (GameObject bullet in bullets)
             {
                 SpriteRenderer bBox = bullet.GetComponent<SpriteRenderer>();
+                if (bullet.transform.position.y > 5)
+                {
+                    killables.Add(bullet);
+                }
 
                 if (AABBCollision(eBox.bounds, bBox.bounds))
                 {
@@ -51,23 +62,12 @@ public class CollisionManager : MonoBehaviour
                 }
             }
         }
-    //}
-      //else
-      //{
-      //    Info.text = "Circles";
-      //    foreach (GameObject tree in trees)
-      //    {
-      //        SpriteRenderer tBox = tree.GetComponent<SpriteRenderer>();
-      //        tBox.color = Color.white;
-      //
-      //        if (CircleCollision(vBox.bounds, tBox.bounds))
-      //        {
-      //            tBox.color = Color.red;
-      //            vBox.color = Color.red;
-      //        }
-      //
-      //    }
-      //}
+
+        foreach(GameObject victim in killables)
+        {
+            Kill(victim);
+        }
+
     }
 
     bool AABBCollision(Bounds vehicle, Bounds obstacle)
@@ -82,6 +82,20 @@ public class CollisionManager : MonoBehaviour
         }
         
         return false;
+    }
+
+    public void Kill(GameObject victim)
+    {
+        if (enemies.Contains(victim))
+        {
+            enemies.Remove(victim);
+            Destroy(victim);
+        }
+        if (bullets.Contains(victim))
+        {
+            bullets.Remove(victim);
+            Destroy(victim);
+        }
     }
 
     bool CircleCollision(Bounds vehicle, Bounds obstacle)

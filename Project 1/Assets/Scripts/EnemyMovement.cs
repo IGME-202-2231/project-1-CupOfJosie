@@ -10,7 +10,12 @@ public class EnemyMovement : MonoBehaviour
     //fields
 
     Vector3 objectPosition = Vector3.zero;
+
+    [SerializeField]
     Vector3 direction = Vector3.down;
+    [SerializeField]
+    CollisionManager cm;
+
     Vector3 velocity = Vector3.zero;
 
     [SerializeField]
@@ -22,9 +27,17 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     SpriteRenderer spriteRenderer;
 
-    Rect carRect;
-    Rect screen;
+    public Vector3 Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
 
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +45,6 @@ public class EnemyMovement : MonoBehaviour
         objectPosition = transform.position;
         sWidth = Screen.width;
         sHeight = Screen.height;
-        screen = new Rect(0, 0, sWidth, sHeight);
     }
 
     // Update is called once per frame
@@ -40,18 +52,20 @@ public class EnemyMovement : MonoBehaviour
     {
         velocity = direction * speed * Time.deltaTime;
 
-        if (transform.position.y < -5)
-        {
-            transform.position = new Vector3(transform.position.x, -5);
-        }
-        if (transform.position.x > 8)
-        {
-            transform.position = new Vector3(8, transform.position.y);
-        }
-        if (transform.position.x < -8)
-        {
-            transform.position = new Vector3(-8, transform.position.y);
-        }
+      //if (transform.position.y < 5)
+      //{
+      //    if (direction == Vector3.up)
+      //    {
+      //        cm.Kill(spriteRenderer.gameObject);
+      //    }
+      //}
+      //if (transform.position.y < -5)
+      //{
+      //    if(direction == Vector3.down)
+      //    {
+      //        cm.Kill(spriteRenderer.gameObject);
+      //    }
+      //}
 
         objectPosition = transform.position;
 
