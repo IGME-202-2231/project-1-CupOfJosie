@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class CollisionManager : MonoBehaviour
 {
@@ -36,32 +37,34 @@ public class CollisionManager : MonoBehaviour
     void Update()
     {
         killables = new List<GameObject>();
-      //if (AABB)
-      //{
-        foreach (GameObject enemy in enemies)
-        {
-            SpriteRenderer eBox = enemy.GetComponent<SpriteRenderer>();
 
-            if (enemy.transform.position.y < -5)
+        foreach (GameObject bullet in bullets)
+        {
+            SpriteRenderer bBox = bullet.GetComponent<SpriteRenderer>();
+            if (bullet.transform.position.y > 5)
             {
-                killables.Add(enemy);
+                killables.Add(bullet);
             }
 
-            foreach (GameObject bullet in bullets)
+            foreach (GameObject enemy in enemies)
             {
-                SpriteRenderer bBox = bullet.GetComponent<SpriteRenderer>();
-                if (bullet.transform.position.y > 5)
+                SpriteRenderer eBox = enemy.GetComponent<SpriteRenderer>();
+
+                if (enemy.transform.position.y < -5)
                 {
-                    killables.Add(bullet);
+                    killables.Add(enemy);
                 }
 
                 if (AABBCollision(eBox.bounds, bBox.bounds))
                 {
-                    eBox.color = Color.red;
-                    bBox.color = Color.red;
+                    killables.Add(enemy);
+                    killables.Add(bullet);
                 }
+
             }
+
         }
+
 
         foreach(GameObject victim in killables)
         {
