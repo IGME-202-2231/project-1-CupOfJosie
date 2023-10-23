@@ -91,6 +91,10 @@ public class CollisionManager : MonoBehaviour
     {
         if (enemies.Contains(victim))
         {
+            if(victim.tag == "fox")
+            {
+                //create piglet
+            }
             enemies.Remove(victim);
             Destroy(victim);
         }
