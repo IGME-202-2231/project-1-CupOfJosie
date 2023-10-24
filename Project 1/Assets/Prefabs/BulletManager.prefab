@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   cm: {fileID: 0}
-  bulletPre: {fileID: 0}
+  bulletPre: {fileID: 7585933617596456700, guid: 985356dcb001c604aa30d710cf9b6a34, type: 3}

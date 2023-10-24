@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class CollisionManager : MonoBehaviour
@@ -12,9 +13,20 @@ public class CollisionManager : MonoBehaviour
     List<GameObject> enemies;
 
     [SerializeField]
+    List<GameObject> piglets;
+
+    [SerializeField]
     List<GameObject> bullets;
 
+    [SerializeField]
+    GameObject pigPrefab;
+    [SerializeField]
+    GameObject player;
+
+    //others
     List<GameObject> killables;
+    public float timer;
+
 
     public List<GameObject> Enemies
     {
@@ -30,14 +42,24 @@ public class CollisionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        timer = 1;
+        enemies = new List<GameObject>();
+        bullets = new List<GameObject>();
+        piglets = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //initialize set variables
         killables = new List<GameObject>();
+        SpriteRenderer pBox = player.GetComponent<SpriteRenderer>();
+        if(timer > 0)
+        {
+            timer = timer - Time.deltaTime;
+        }
 
+        //bullet collisions with enemies
         foreach (GameObject bullet in bullets)
         {
             SpriteRenderer bBox = bullet.GetComponent<SpriteRenderer>();
@@ -50,19 +72,57 @@ public class CollisionManager : MonoBehaviour
             {
                 SpriteRenderer eBox = enemy.GetComponent<SpriteRenderer>();
 
-                if (enemy.transform.position.y < -5)
-                {
-                    killables.Add(enemy);
-                }
-
                 if (AABBCollision(eBox.bounds, bBox.bounds))
                 {
-                    killables.Add(enemy);
+                    if(enemy.tag == "fox")
+                    {
+                        killables.Add(enemy);
+                    }
+
                     killables.Add(bullet);
                 }
 
             }
 
+        }
+
+        //player collision with enemies and pigs
+        foreach(GameObject enemy in enemies)
+        {
+            SpriteRenderer eBox = enemy.GetComponent<SpriteRenderer>();
+
+            if (enemy.transform.position.y < -5)
+            {
+                killables.Add(enemy);
+            }
+
+            if (AABBCollision(eBox.bounds, pBox.bounds))
+            {
+                if(timer <= 0)
+                {
+                    player.GetComponent<PlayerManager>().Lives--;
+                }
+                timer = 1;
+            }
+
+        }
+        if(piglets.Count > 0)
+        {
+            foreach(GameObject pig in piglets)
+            {
+                SpriteRenderer pigBox = pig.GetComponent<SpriteRenderer>();
+
+                if (pig.transform.position.y < -5)
+                {
+                    killables.Add(pig);
+                }
+
+                if(AABBCollision(pigBox.bounds, pBox.bounds))
+                {
+                    player.GetComponent<PlayerManager>().Score += 100;
+                    killables.Add(pig);
+                }
+            }
         }
 
 
@@ -94,6 +154,7 @@ public class CollisionManager : MonoBehaviour
             if(victim.tag == "fox")
             {
                 //create piglet
+                piglets.Add(Instantiate(pigPrefab, victim.transform.position, pigPrefab.transform.rotation));
             }
             enemies.Remove(victim);
             Destroy(victim);
@@ -101,6 +162,11 @@ public class CollisionManager : MonoBehaviour
         if (bullets.Contains(victim))
         {
             bullets.Remove(victim);
+            Destroy(victim);
+        }
+        if (piglets.Contains(victim))
+        {
+            piglets.Remove(victim);
             Destroy(victim);
         }
     }

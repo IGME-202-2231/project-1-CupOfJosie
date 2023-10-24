@@ -13,8 +13,6 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]
     Vector3 direction = Vector3.down;
-    [SerializeField]
-    CollisionManager cm;
 
     Vector3 velocity = Vector3.zero;
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5098995936557070134}
   - component: {fileID: 1507129918936464708}
   - component: {fileID: 1368901442418217653}
+  - component: {fileID: 5059664268222649836}
   m_Layer: 0
   m_Name: Angel_Face
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1551272323979448960
 SpriteRenderer:
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementController: {fileID: 1507129918936464708}
-  bulletManager: {fileID: 732662830062507513, guid: fb50a43ef9f701d4fb7a6fa31d52cb5f, type: 3}
+  bulletManager: {fileID: 0}
 --- !u!114 &1507129918936464708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +162,19 @@ MonoBehaviour:
     m_ActionId: 7ef0154c-6e4d-48ec-b07c-09146f7bd918
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5098995936557070134}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0355a979-0852-4a8b-92a0-4b4ba7e7bc3f
     m_ActionName: Player/Fire[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
@@ -169,3 +182,17 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5059664268222649836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179129827551179556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2249905514b4f49a384362d05dfe7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 3
+  player: {fileID: 2179129827551179556}

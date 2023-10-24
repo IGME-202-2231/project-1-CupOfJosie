@@ -11,13 +11,18 @@
 
 -   Camera Orientation: Top down
 -   Camera Movement: Camera will not move but enemies will move down    
--   Player Health: There will be lives but no health bar, like having 3 hp
--   End Condition: Make your way through waves of different obstacles to defeat Jack Rabbit Johnson
--   Scoring: Score points by killing enemies, not sure yet how to differentiate wins
+-   Player Health: You have three lives
+-   End Condition: Hit enough foxes or cactuses and you die
+-   Scoring: Score points by shooting foxes and grabbing the piglets they drop.
 
 ### Game Description
 
-An Adventure-Time fan game about the robot cowboy Angel Face, who aims to rescue the piglets from Jack Rabbit Johnson
+An Adventure-Time fan game about the robot cowboy Angel Face, who aims to rescue the piglets from Jack Rabbit Johnson and his legion of foxes.
+
+Enemies:
+    Foxes: The foxes are fast and will drop piglets when shot, pick up the piglets to collect points. Don't let them bite you!
+
+    Cactuses: These will block your bullets and are super spiky, if ou touch them you will lose a life.
 
 ### Controls
 
@@ -30,18 +35,19 @@ An Adventure-Time fan game about the robot cowboy Angel Face, who aims to rescue
 
 ## You Additions
 
-The assets are all designed by me!
+The assets are all designed by me in piskel!
+The bullet delay solution I used was a timer that updates with delta time, when it reaches zero you are able to fire again.
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+-   All assets were made by me!
+-   Inspired by Season 7 episode 17 of Adventure Time
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+No know errors.
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+No gameover screen but the game does stop when you die and you score is still visible.
 
